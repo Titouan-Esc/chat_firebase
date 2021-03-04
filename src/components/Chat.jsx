@@ -1,9 +1,10 @@
+import React, { useState, useEffect, useRef } from "react";
 import firebase, { auth, db } from "../services/firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import ChatMessage from "./ChatMessage";
-import React, { useState } from "react";
 
 const Chat = () => {
+  const scroller = useRef();
   // ! Referance à ma base de donnée "message"
   const messageRef = db.collection("messages");
   const query = messageRef.orderBy("createdAt").limitToLast(25);
@@ -27,11 +28,16 @@ const Chat = () => {
     setFormValue("");
   };
 
+  useEffect(() => {
+    scroller.current.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
   return (
     <>
       <main>
         {messages &&
           messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
+        <span ref={scroller}></span>
       </main>
       <form onSubmit={sendMessage}>
         <input

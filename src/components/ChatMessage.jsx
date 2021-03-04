@@ -9,7 +9,7 @@ const ChatMessage = ({ message }) => {
     <div className={`message_${messageClass}`}>
       <img src={photoURL} alt="User photo" />
       <p>{text}</p>
-      <p>{displayName}</p>
+      <p className="name">{displayName}</p>
     </div>
   );
 };
