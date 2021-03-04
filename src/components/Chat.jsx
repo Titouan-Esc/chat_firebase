@@ -6,7 +6,7 @@ import React, { useState } from "react";
 const Chat = () => {
   // ! Referance à ma base de donnée "message"
   const messageRef = db.collection("messages");
-  const query = messageRef.orderBy("CreatedAt").limitToLast(25);
+  const query = messageRef.orderBy("createdAt").limitToLast(25);
 
   //   ? Creation d'un state avec un element d'une collection
   const [messages] = useCollectionData(query, { idField: "id" });
@@ -15,11 +15,13 @@ const Chat = () => {
 
   const sendMessage = async (e) => {
     e.preventDefault();
-    const { uid, photoURL } = auth().currentUser;
+    const { uid, photoURL, displayName } = auth().currentUser;
     await messageRef.add({
       text: formValue,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      uid: photoURL,
+      photoURL,
+      uid,
+      displayName,
     });
 
     setFormValue("");

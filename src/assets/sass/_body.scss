@@ -4,12 +4,22 @@
   list-style: none;
   text-decoration: none;
   box-sizing: border-box;
-  color: black;
 }
 
-div {
-  background: $background_color;
+.body {
+  background-color: $color_one;
   header {
+    @include flex_box(column, space-around, center);
+    height: 15vh;
+  }
+  section {
     @include flex_box(column, space-between, center);
+    main {
+      text-align: center;
+      .message_envoye {
+        margin: 20px 0;
+        background-color: $color_two;
+      }
+    }
   }
 }

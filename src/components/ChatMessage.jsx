@@ -1,12 +1,15 @@
+import { auth } from "../services/firebase";
+import React, { useState } from "react";
+
 const ChatMessage = ({ message }) => {
-  const { text, uid, photoURL } = message;
+  const { text, uid, photoURL, displayName } = message;
+
+  const messageClass = uid === auth().currentUser.uid ? "envoye" : "reçu";
   return (
-    <div className="message">
-      <img
-        src="https://images.pexels.com/photos/53510/head-details-otter-close-up-53510.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-        alt="User photo"
-      />
+    <div className={`message_${messageClass}`}>
+      <img src={photoURL} alt="User photo" />
       <p>{text}</p>
+      <p>{displayName}</p>
     </div>
   );
 };
