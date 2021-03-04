@@ -5,7 +5,7 @@ import React, { useState } from "react";
 
 const Chat = () => {
   // ! Referance à ma base de donnée "message"
-  const messageRef = db.collection("message");
+  const messageRef = db.collection("messages");
   const query = messageRef.orderBy("CreatedAt").limitToLast(25);
 
   //   ? Creation d'un state avec un element d'une collection
