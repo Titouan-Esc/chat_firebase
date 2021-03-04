@@ -1,10 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 // ! Importation de nos const dans firebase.js
 import { auth, db } from "./services/firebase";
-import { useAuthState } from "react-firebase-hooks";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
+import SignIn from "./components/SignIn";
+import Chat from "./components/Chat";
+import SignOut from "./components/SignOut";
 
 function App() {
+  const [user, setUser] = useState(false);
+
   return (
     <div>
       <header>
