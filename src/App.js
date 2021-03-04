@@ -6,6 +6,7 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import SignIn from "./components/SignIn";
 import Chat from "./components/Chat";
 import SignOut from "./components/SignOut";
+import scss from "./assets/sass/style.scss";
 
 function App() {
   const [user, setUser] = useState(false);
@@ -14,7 +15,7 @@ function App() {
     <div>
       <header>
         <h1>Bienvenu sur le chat de la meilleur classe de Talis</h1>
-        <button>Déconnection</button>
+        <SignOut />
       </header>
       <section>{user ? <Chat /> : <SignIn />}</section>
     </div>
