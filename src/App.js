@@ -9,7 +9,7 @@ import SignOut from "./components/SignOut";
 import scss from "./assets/sass/style.scss";
 
 function App() {
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useAuthState(auth());
 
   return (
     <div>
