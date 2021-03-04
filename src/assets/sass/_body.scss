@@ -55,7 +55,10 @@
       }
     }
     form {
+      position: fixed;
       height: 10vh;
+      bottom: 0px;
+      left: 45%;
       @include flex_box(column, space-around, center);
       text-align: center;
 
